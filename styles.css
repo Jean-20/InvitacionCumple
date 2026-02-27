@@ -1,0 +1,380 @@
+/* styles.css — estructura y tipografía sin colores finales */
+
+/* Tipografías cargadas en el head: Great Vibes (encabezados) y Playfair Display (cuerpo) */
+
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --text: #0d0d0d;
+  --muted: #6b6b6b;
+  --accent: #47733a; /* suave verde para acentos */
+  --accent-2: #c9a94a; /* acento dorado suave */
+  --panel: rgba(255,255,255,0.36);
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Playfair Display', serif;
+  background: url('image/descarga.png') no-repeat center center fixed;
+  background-size: cover;
+  color: var(--text); /* tono neutro para maquetación */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.container {
+  max-width: 760px;
+  width: 92%;
+  margin: 4vh auto;
+  padding: 4vw 4vw 3vw 4vw;
+  background: transparent; /* dejar ver la imagen de fondo */
+  box-shadow: none;
+  text-align: center;
+  border-radius: 12px;
+  position: relative; /* para overlay pseudo-element */
+}
+
+/* overlay dentro del contenedor para mejorar legibilidad del texto
+   sin opacar completamente la imagen de fondo */
+.container::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 12px;
+  background: linear-gradient(rgba(255,255,255,0.68), rgba(255,255,255,0.54));
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* asegurar que el contenido quede sobre el overlay */
+.container > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Encabezados elegantes */
+h1, h2, h3 {
+  margin: 0.4rem 0;
+  line-height: 1;
+}
+
+h1 {
+  font-family: 'Great Vibes', cursive;
+  font-size: clamp(2.4rem, 7.5vw, 4.6rem);
+  font-weight: 400;
+  letter-spacing: 0.6px;
+}
+
+h2 {
+  font-family: 'Great Vibes', cursive;
+  font-size: clamp(1.2rem, 4.6vw, 2rem);
+  font-weight: 400;
+  color: var(--muted);
+}
+
+/* Padres: más grandes y legibles para el público */
+.parents {
+  font-size: clamp(2rem, 7.5vw, 5rem);
+  line-height: 1.03;
+  margin: 0.6rem 0 0.9rem 0;
+  color: var(--text);
+  letter-spacing: 0.6px;
+  text-shadow: 0 1px 0 rgba(255,255,255,0.85), 0 8px 26px rgba(0,0,0,0.18);
+  transform-origin: center;
+}
+
+@media (max-width: 900px) {
+  .parents { font-size: clamp(1.8rem, 6.6vw, 3.4rem); }
+}
+
+@media (max-width: 520px) {
+  .parents { font-size: 1.8rem; }
+}
+
+h1, h2, h3, p {
+  text-shadow: 0 1px 0 rgba(255,255,255,0.75), 0 6px 18px rgba(0,0,0,0.12);
+  color: var(--text);
+}
+h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+  font-weight: 400;
+  text-transform: none;
+}
+
+p {
+  font-size: clamp(0.95rem, 3vw, 1.05rem);
+  line-height: 1.6;
+  margin: 0.6rem 0;
+}
+
+/* Intro paragraph (ordenada y legible) */
+.intro {
+  max-width: 720px;
+  margin: 0.6rem auto 1rem auto;
+  text-align: center;
+  font-size: clamp(0.98rem, 2.6vw, 1.06rem);
+  line-height: 1.8;
+  letter-spacing: 0.2px;
+  color: var(--text);
+}
+
+@media (max-width: 520px) {
+  .intro { font-size: 1rem; line-height: 1.6; padding: 0 6px; }
+}
+
+.crown {
+  display: block;
+  margin: -36px auto 6px auto;
+  max-width: 120px;
+  width: 18vw;
+}
+
+.play-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  margin: 0.6rem 0 1rem 0;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.9);
+  color: var(--text);
+  font-size: 1.15rem;
+  border: 1px solid rgba(0,0,0,0.06);
+  cursor: pointer;
+  transition: transform 0.22s ease, box-shadow 0.22s ease;
+}
+
+.play-button:hover {
+  transform: scale(1.06);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.08);
+}
+
+.play-button::before,
+.play-button::after {
+  content: ""; /* no iconografía de color por ahora */
+}
+
+.info {
+  margin-top: 1.6rem;
+  text-align: center;
+  /* frosted panel to improve legibility while keeping background visible */
+  background: var(--panel);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  padding: 1.2rem 1.4rem;
+  border-radius: 14px;
+  box-shadow: 0 14px 40px rgba(0,0,0,0.10);
+  color: var(--text);
+}
+
+.date-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.2rem;
+}
+
+.date-row .weekday,
+.date-row .time {
+  flex: 1 1 0;
+  display: flex;
+  align-items: center;
+  font-weight: 700;
+}
+
+.date-row .weekday {
+  justify-content: flex-start;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  font-size: 0.95rem;
+}
+
+.date-row .time {
+  justify-content: flex-end;
+  font-size: 1rem;
+}
+
+.date-circle {
+  flex: 0 0 128px;
+  width: 128px;
+  height: 128px;
+  border-radius: 50%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at 30% 20%, rgba(255,255,255,0.98) 0%, rgba(250,250,250,0.97) 40%);
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.10);
+}
+
+.date-circle .circle-month {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  margin-bottom: 6px;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.date-circle strong {
+  font-family: 'Cormorant Garamond', 'Playfair Display', serif;
+  font-size: 3.4rem;
+  line-height: 1;
+  margin: 0;
+  color: var(--text);
+}
+
+.date-circle .circle-year {
+  font-size: 0.72rem;
+  margin-top: 6px;
+  color: rgba(0,0,0,0.7);
+}
+
+/* decorative outer ring and inner dashed ring */
+.date-circle::before {
+  content: "";
+  position: absolute;
+  left: -12px;
+  top: -12px;
+  width: calc(100% + 24px);
+  height: calc(100% + 24px);
+  border-radius: 50%;
+  border: 2px solid rgba(0,0,0,0.06);
+}
+.date-circle::after {
+  content: "";
+  position: absolute;
+  left: 12px;
+  top: 12px;
+  width: calc(100% - 24px);
+  height: calc(100% - 24px);
+  border-radius: 50%;
+  border: 1px dashed rgba(0,0,0,0.04);
+}
+
+.date-circle:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 28px rgba(0,0,0,0.10);
+}
+
+/* Líneas decorativas junto a weekday (a la derecha) y time (a la izquierda) */
+.date-row .weekday::after {
+  content: "";
+  display: block;
+  height: 1px;
+  background: rgba(0,0,0,0.06);
+  margin-left: 14px;
+  width: calc(50% - 64px);
+}
+
+.date-row .time::before {
+  content: "";
+  display: block;
+  height: 1px;
+  background: rgba(0,0,0,0.06);
+  margin-right: 14px;
+  width: calc(50% - 64px);
+}
+
+@media (max-width: 520px) {
+  .date-row { flex-direction: column; gap: 0.4rem; }
+  .date-row .weekday::after, .date-row .time::before { display: none; }
+  .date-circle { width: 96px; height: 96px; }
+  .date-circle strong { font-size: 2rem; }
+}
+
+.location-text {
+  font-style: italic;
+  margin: 0.5rem 0 0.6rem 0;
+}
+
+.location-button {
+  display: inline-block;
+  padding: 0.6rem 1.1rem;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 700;
+  background: #f0f0f0;
+  color: inherit;
+  border: none;
+}
+
+.location-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.06);
+}
+
+.dress-code {
+  display: flex;
+  justify-content: center;
+  gap: 1.2rem;
+  margin: 0.6rem 0;
+  font-size: 2rem;
+}
+
+.sport {
+  font-family: 'Great Vibes', cursive;
+  font-size: 1.2rem;
+  margin: 0.3rem 0 0.6rem 0;
+}
+
+.note,
+.rsvp,
+.gift-note {
+  font-size: 0.95rem;
+  margin: 0.35rem 0;
+}
+
+.confirm-button {
+  display: inline-block;
+  padding: 0.6rem 1.2rem;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 700;
+  background: #e9e9e9;
+  color: inherit;
+  border: none;
+  cursor: pointer;
+  margin-top: 0.6rem;
+}
+
+.confirm-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.06);
+}
+
+.envelope {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0.8rem 0;
+}
+
+.env-icon { font-size: 2.6rem; }
+.env-text { font-size: 1rem; letter-spacing: 1px; margin-top: 0.2rem; }
+
+.closing {
+  font-family: 'Great Vibes', cursive;
+  margin: 0.9rem 0 0.4rem 0;
+  font-size: clamp(1.4rem, 4.5vw, 2.6rem);
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .container { width: 100%; margin: 0; padding: 5vw 6vw; border-radius: 0; }
+  .date-row { flex-direction: column; gap: 0.4rem; }
+  .dress-code { font-size: 1.5rem; }
+  .env-icon { font-size: 2.2rem; }
+}
