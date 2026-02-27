@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invitación Quinceañero</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Times New Roman', serif;
+            background: url('image/descarga.png') no-repeat center center fixed;
+            background-size: cover;
+            color: #3d2817;
+        }
+
+        .container {
+            max-width: 90vw;
+            width: 100%;
+            margin: 0 auto;
+            padding: 5vw;
+            background: rgba(255, 250, 240, 0.75);
+            /* creamy white */
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
+            text-align: center;
+            border-radius: 8px;
+            box-sizing: border-box;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                width: 100vw;
+                max-width: 100vw;
+                margin: 0;
+                padding: 4vw;
+                border-radius: 0;
+            }
+
+            h1 {
+                font-size: 2.2rem;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            p {
+                font-size: 1rem;
+            }
+
+            .play-button {
+                width: 50px;
+                height: 50px;
+                line-height: 50px;
+                font-size: 1.5rem;
+            }
+        }
+
+        h1,
+        h2,
+        h3 {
+            margin: .5rem 0;
+        }
+
+        h1 {
+            font-size: 8vw;
+            min-font-size: 2rem;
+            font-family: 'Great Vibes', cursive;
+            color: #D4AF37;
+            /* elegant gold */
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            font-size: 6vw;
+            min-font-size: 1.3rem;
+            font-family: 'Great Vibes', cursive;
+            color: #C45B7A;
+            /* romantic rose */
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        p {
+            font-size: 3vw;
+            min-font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .play-button {
+            display: inline-block;
+            position: relative;
+            width: 40px;
+            height: 40px;
+            margin: 0.8rem 0 1.2rem 0;
+            background: linear-gradient(135deg, #D4AF37 0%, #C9A227 100%);
+            border-radius: 50%;
+            line-height: 40px;
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 10px rgba(212, 175, 55, 0.4);
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            transition: all 0.3s ease;
+        }
+
+        .play-button:hover {
+            background: linear-gradient(135deg, #E8C547 0%, #D4AF37 100%);
+            box-shadow: 0 6px 15px rgba(212, 175, 55, 0.6);
+            transform: scale(1.1);
+        }
+
+        .play-button::before,
+        .play-button::after {
+            content: "\2665";
+            /* heart */
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.2rem;
+            color: #E75480;
+        }
+
+        .play-button::before {
+            left: -12px;
+        }
+
+        .play-button::after {
+            right: -12px;
+        }
+
+        .crown {
+            display: block;
+            margin: -30px auto 0 auto;
+            max-width: 120px;
+            width: 20vw;
+            position: relative;
+            z-index: 2;
+        }
+
+        .info {
+            margin-top: 2rem;
+            text-align: center;
+            color: #3d2817;
+        }
+
+        .date-row {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin-bottom: 1rem;
+            font-weight: bold;
+        }
+
+        .date-row .weekday,
+        .date-row .time {
+            flex: 1;
+        }
+
+        .date-row .date {
+            flex: 1;
+            font-size: 1.3rem;
+            color: #2D5016;
+            /* deep green */
+        }
+
+        .location-text {
+            font-style: italic;
+            margin: 0.5rem 0;
+        }
+
+        .location-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #C45B7A 0%, #A84B6A 100%);
+            color: #fff;
+            padding: 0.6rem 1.2rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 0.5rem 0 1rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .location-button:hover {
+            box-shadow: 0 4px 10px rgba(196, 91, 122, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .location-button .pin {
+            margin-right: 0.4rem;
+        }
+
+        .dress-code {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 0.5rem 0;
+            font-size: 2rem;
+            color: #2D5016;
+            /* deep green */
+        }
+
+        .sport {
+            font-family: 'Great Vibes', cursive;
+            font-size: 1.5rem;
+            color: #C45B7A;
+            /* rose */
+            margin: 0.3rem 0;
+        }
+
+        .note,
+        .rsvp {
+            font-size: 0.95rem;
+            margin: 0.3rem 0;
+        }
+
+        .confirm-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #2D5016 0%, #1a3009 100%);
+            color: #fff;
+            padding: 0.6rem 1.4rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 0.5rem 0 1rem 0;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .confirm-button:hover {
+            box-shadow: 0 4px 10px rgba(45, 80, 22, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .confirm-button .check {
+            margin-right: 0.4rem;
+        }
+
+        .gift-note {
+            font-size: 0.95rem;
+            margin: 0.5rem 0;
+        }
+
+        .envelope {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0.8rem 0;
+            color: #C45B7A;
+            /* rose */
+        }
+
+        .env-icon {
+            font-size: 3rem;
+        }
+
+        .env-text {
+            font-size: 1rem;
+            margin-top: 0.3rem;
+            letter-spacing: 1px;
+        }
+
+        .closing {
+            font-family: 'Great Vibes', cursive;
+            color: #D4AF37;
+            margin: 1rem 0 0.5rem 0;
+            font-size: 2.5rem;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        @media (max-width: 600px) {
+            .date-row {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .dress-code {
+                font-size: 1.5rem;
+            }
+
+            .location-button {
+                padding: 0.5rem 1rem;
+            }
+
+            .confirm-button {
+                padding: 0.5rem 1rem;
+            }
+
+            .env-icon {
+                font-size: 2.5rem;
+            }
+
+            .closing {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <img src="image/tiara_1742798.png" alt="Corona" class="crown">
+        <button id="playButton" class="play-button">&#9658;</button>
+        <audio id="audioPlayer" src="./Ma Belle Evangeline - Letra Latino.mp3"></audio>
+        <p>Cumplir 15 años y compartirlo con los que amo es una<br>
+            manera de ser feliz y celebrar estos quince años que me<br>
+            han sido dados para fortalecer los dones que Dios me<br>
+            dio en todos los actos de mi vida.</p>
+        <h2>Luis Miguel Delgadillo Guevara<br>&amp;<br>Gloria Paniura Ramos</h2>
+        <p>Se complacen en invitarles a celebrar los</p>
+        <h1>XV</h1>
+        <p>De su adorada hija:</p>
+        <h1>Kazumi Delgadillo Paniura</h1>
+        <div class="info">
+            <div class="date-row">
+                <span class="weekday">SÁBADO</span>
+                <span class="date">
+                    <strong>25</strong><br>
+                    abril 2025
+                </span>
+                <span class="time">8:00 P.M.</span>
+            </div>
+            <p class="location-text">"Fabrica de Eventos"<br>
+                Av. Próceres de la Independencia 4161 - San Juan de Lurigancho</p>
+            <a href="https://maps.app.goo.gl/SzP4o9mKGffCbBas5" class="location-button"><span class="pin">📍</span> VER
+                UBICACIÓN</a>
+            <h3>Dress code:</h3>
+            <div class="dress-code">
+                <span class="icon tie">👔</span>
+                <span class="icon dress">👗</span>
+            </div>
+            <p class="sport">Sport elegante</p>
+            <p class="note">Amablemente, el color verde únicamente para la quinceañera.</p>
+            <p class="rsvp">Por favor, confirme su asistencia antes del 20 de abril.</p>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSdAVBYhMOkuRFvXJfKMyC8MRgW7XVkjaMRHGD2rCbXEGVAJcg/viewform?usp=publish-editor"
+                class="confirm-button"><span class="check">✔️</span> CONFIRMAR</a>
+            <p class="gift-note">Tu presencia en este día tan especial es el mejor regalo, pero si deseas obsequiarme un
+                detalle, una contribución en efectivo será recibida con mucho cariño y gratitud.</p>
+            <div class="envelope">
+                <span class="env-icon">✉️</span>
+                <p class="env-text">LLUVIA DE SOBRES</p>
+            </div>
+            <h2 class="closing">¡Te esperamos!</h2>
+        </div>
+    </div>
+    <script>
+        const playButton = document.getElementById('playButton');
+        const audioPlayer = document.getElementById('audioPlayer');
+        let isPlaying = false;
+
+        playButton.addEventListener('click', function () {
+            if (isPlaying) {
+                audioPlayer.pause();
+                isPlaying = false;
+            } else {
+                audioPlayer.play();
+                isPlaying = true;
+            }
+        });
+    </script>
+</body>
+
+</html>
