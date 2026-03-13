@@ -9,12 +9,15 @@
 :root {
   --text: #0d0d0d;
   --muted: #6b6b6b;
-  --accent: #47733a; /* suave verde para acentos */
-  --accent-2: #c9a94a; /* acento dorado suave */
-  --panel: rgba(255,255,255,0.36);
+  --accent: #47733a;
+  /* suave verde para acentos */
+  --accent-2: #c9a94a;
+  /* acento dorado suave */
+  --panel: rgba(255, 255, 255, 0.36);
 }
 
-html, body {
+html,
+body {
   height: 100%;
 }
 
@@ -24,7 +27,8 @@ body {
   font-family: 'Playfair Display', serif;
   background: url('image/descarga.png') no-repeat center center fixed;
   background-size: cover;
-  color: var(--text); /* tono neutro para maquetación */
+  color: var(--text);
+  /* tono neutro para maquetación */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -34,35 +38,87 @@ body {
   width: 92%;
   margin: 4vh auto;
   padding: 4vw 4vw 3vw 4vw;
-  background: transparent; /* dejar ver la imagen de fondo */
+  background: transparent;
+  /* dejar ver la imagen de fondo */
   box-shadow: none;
   text-align: center;
   border-radius: 12px;
-  position: relative; /* para overlay pseudo-element */
+  position: relative;
+  /* para overlay pseudo-element */
 }
 
-/* overlay dentro del contenedor para mejorar legibilidad del texto
-   sin opacar completamente la imagen de fondo */
-.container::before {
+/* overlay aplicado a todo el body para cubrir toda la página
+   y mantener la textura de fondo visible */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Playfair Display', serif;
+  background: url('image/descarga.png') no-repeat center center fixed;
+  background-size: cover;
+  color: var(--text);
+  /* tono neutro para maquetación */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  position: relative;
+  /* para el pseudo-elemento de overlay */
+}
+
+body::before {
   content: "";
-  position: absolute;
+  position: fixed;
   inset: 0;
-  border-radius: 12px;
-  background: linear-gradient(rgba(255,255,255,0.68), rgba(255,255,255,0.54));
+  background: linear-gradient(rgba(255, 255, 255, 0.68), rgba(255, 255, 255, 0.54));
   pointer-events: none;
   z-index: 0;
 }
 
+.container {
+  max-width: 760px;
+  width: 92%;
+  margin: 4vh auto;
+  padding: 4vw 4vw 3vw 4vw;
+  background: transparent;
+  /* dejar ver la imagen de fondo */
+  box-shadow: none;
+  text-align: center;
+  border-radius: 12px;
+  position: relative;
+  /* para overlay pseudo-element */
+}
+
 /* asegurar que el contenido quede sobre el overlay */
-.container > * {
+.container>* {
   position: relative;
   z-index: 1;
 }
 
 /* Encabezados elegantes */
-h1, h2, h3 {
+h1,
+h2,
+h3 {
   margin: 0.4rem 0;
   line-height: 1;
+}
+
+/* estilo especial para el "XV" central: texto negro con bordes rojos como la imagen */
+h1.xv {
+  font-size: 3rem;
+  line-height: 1.03;
+  margin: 0.6rem 0 0.9rem 0;
+  color: var(--text);
+  letter-spacing: 0.6px;
+  text-shadow: 0 5px 0 rgba(255, 102, 0, 0.505), 0 8px 26px rgba(0, 0, 0, 0.18);
+  transform-origin: center;
+}
+
+h1.son {
+  font-size: 3rem;
+  line-height: 1.03;
+  margin: 0.6rem 0 0.9rem 0;
+  color: var(--text);
+  letter-spacing: 0.6px;
+  text-shadow: 0 5px 0 rgb(255, 0, 238), 0 8px 26px rgba(0, 0, 0, 0.18);
+  transform-origin: center;
 }
 
 h1 {
@@ -86,27 +142,42 @@ h2 {
   margin: 0.6rem 0 0.9rem 0;
   color: var(--text);
   letter-spacing: 0.6px;
-  text-shadow: 0 1px 0 rgba(255,255,255,0.85), 0 8px 26px rgba(0,0,0,0.18);
+  text-shadow: 0 1px 0 rgba(255, 0, 0, 0.85), 0 8px 26px rgba(0, 0, 0, 0.18);
   transform-origin: center;
 }
 
 @media (max-width: 900px) {
-  .parents { font-size: clamp(1.8rem, 6.6vw, 3.4rem); }
+  .parents {
+    font-size: clamp(1.8rem, 6.6vw, 3.4rem);
+  }
 }
 
 @media (max-width: 520px) {
-  .parents { font-size: 1.8rem; }
+  .parents {
+    font-size: 1.8rem;
+  }
 }
 
-h1, h2, h3, p {
-  text-shadow: 0 1px 0 rgba(255,255,255,0.75), 0 6px 18px rgba(0,0,0,0.12);
+h1,
+h2,
+h3,
+p {
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.75), 0 6px 18px rgba(0, 0, 0, 0.12);
   color: var(--text);
 }
+
 h3 {
   font-family: 'Playfair Display', serif;
   font-size: 1rem;
   font-weight: 400;
   text-transform: none;
+}
+
+/* estilo para el subtítulo antes del nombre de la quinceañera */
+p.subtitle {
+  font-style: normal;
+  font-weight: 400;
+  color: var(--text);
 }
 
 p {
@@ -127,7 +198,11 @@ p {
 }
 
 @media (max-width: 520px) {
-  .intro { font-size: 1rem; line-height: 1.6; padding: 0 6px; }
+  .intro {
+    font-size: 1rem;
+    line-height: 1.6;
+    padding: 0 6px;
+  }
 }
 
 .crown {
@@ -145,34 +220,36 @@ p {
   height: 48px;
   margin: 0.6rem 0 1rem 0;
   border-radius: 50%;
-  background: rgba(255,255,255,0.9);
+  background: rgba(255, 255, 255, 0.9);
   color: var(--text);
   font-size: 1.15rem;
-  border: 1px solid rgba(0,0,0,0.06);
+  border: 1px solid rgba(0, 0, 0, 0.06);
   cursor: pointer;
   transition: transform 0.22s ease, box-shadow 0.22s ease;
 }
 
 .play-button:hover {
   transform: scale(1.06);
-  box-shadow: 0 6px 14px rgba(0,0,0,0.08);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08);
 }
 
 .play-button::before,
 .play-button::after {
-  content: ""; /* no iconografía de color por ahora */
+  content: "";
+  /* no iconografía de color por ahora */
 }
 
 .info {
   margin-top: 1.6rem;
   text-align: center;
-  /* frosted panel to improve legibility while keeping background visible */
-  background: var(--panel);
-  -webkit-backdrop-filter: blur(6px);
-  backdrop-filter: blur(6px);
+  /* hacer transparente para que el fondo se vea igual que en la imagen superior */
+  background: transparent;
+  /* eliminar desenfoque y sombra que crean un recuadro blanco */
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
   padding: 1.2rem 1.4rem;
   border-radius: 14px;
-  box-shadow: 0 14px 40px rgba(0,0,0,0.10);
+  box-shadow: none;
   color: var(--text);
 }
 
@@ -214,9 +291,9 @@ p {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: radial-gradient(circle at 30% 20%, rgba(255,255,255,0.98) 0%, rgba(250,250,250,0.97) 40%);
+  background: radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.98) 0%, rgba(250, 250, 250, 0.97) 40%);
   text-align: center;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.10);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.10);
 }
 
 .date-circle .circle-month {
@@ -239,7 +316,7 @@ p {
 .date-circle .circle-year {
   font-size: 0.72rem;
   margin-top: 6px;
-  color: rgba(0,0,0,0.7);
+  color: rgba(0, 0, 0, 0.7);
 }
 
 /* decorative outer ring and inner dashed ring */
@@ -251,8 +328,9 @@ p {
   width: calc(100% + 24px);
   height: calc(100% + 24px);
   border-radius: 50%;
-  border: 2px solid rgba(0,0,0,0.06);
+  border: 2px solid rgba(0, 0, 0, 0.06);
 }
+
 .date-circle::after {
   content: "";
   position: absolute;
@@ -261,12 +339,12 @@ p {
   width: calc(100% - 24px);
   height: calc(100% - 24px);
   border-radius: 50%;
-  border: 1px dashed rgba(0,0,0,0.04);
+  border: 1px dashed rgba(0, 0, 0, 0.04);
 }
 
 .date-circle:hover {
   transform: translateY(-6px);
-  box-shadow: 0 14px 28px rgba(0,0,0,0.10);
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.10);
 }
 
 /* Líneas decorativas junto a weekday (a la derecha) y time (a la izquierda) */
@@ -274,7 +352,7 @@ p {
   content: "";
   display: block;
   height: 1px;
-  background: rgba(0,0,0,0.06);
+  background: rgba(0, 0, 0, 0.06);
   margin-left: 14px;
   width: calc(50% - 64px);
 }
@@ -283,16 +361,30 @@ p {
   content: "";
   display: block;
   height: 1px;
-  background: rgba(0,0,0,0.06);
+  background: rgba(0, 0, 0, 0.06);
   margin-right: 14px;
   width: calc(50% - 64px);
 }
 
 @media (max-width: 520px) {
-  .date-row { flex-direction: column; gap: 0.4rem; }
-  .date-row .weekday::after, .date-row .time::before { display: none; }
-  .date-circle { width: 96px; height: 96px; }
-  .date-circle strong { font-size: 2rem; }
+  .date-row {
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .date-row .weekday::after,
+  .date-row .time::before {
+    display: none;
+  }
+
+  .date-circle {
+    width: 96px;
+    height: 96px;
+  }
+
+  .date-circle strong {
+    font-size: 2rem;
+  }
 }
 
 .location-text {
@@ -313,7 +405,7 @@ p {
 
 .location-button:hover {
   transform: translateY(-3px);
-  box-shadow: 0 6px 12px rgba(0,0,0,0.06);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.06);
 }
 
 .dress-code {
@@ -326,8 +418,9 @@ p {
 
 .sport {
   font-family: 'Great Vibes', cursive;
-  font-size: 1.2rem;
+  font-size: 1.8rem;
   margin: 0.3rem 0 0.6rem 0;
+  text-shadow: 0 5px 0 #FFD700, 0 8px 26px rgba(0, 0, 0, 0.18);
 }
 
 .note,
@@ -352,7 +445,7 @@ p {
 
 .confirm-button:hover {
   transform: translateY(-3px);
-  box-shadow: 0 6px 12px rgba(0,0,0,0.06);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.06);
 }
 
 .envelope {
@@ -362,19 +455,42 @@ p {
   margin: 0.8rem 0;
 }
 
-.env-icon { font-size: 2.6rem; }
-.env-text { font-size: 1rem; letter-spacing: 1px; margin-top: 0.2rem; }
+.env-icon {
+  font-size: 2.6rem;
+}
+
+.env-text {
+  font-size: 1rem;
+  letter-spacing: 1px;
+  margin-top: 0.2rem;
+}
 
 .closing {
   font-family: 'Great Vibes', cursive;
   margin: 0.9rem 0 0.4rem 0;
-  font-size: clamp(1.4rem, 4.5vw, 2.6rem);
+  font-size: clamp(1.8rem, 5vw, 3rem);
+  text-shadow: 0 3px 0 #FF0000;
 }
 
 /* Responsive */
 @media (max-width: 600px) {
-  .container { width: 100%; margin: 0; padding: 5vw 6vw; border-radius: 0; }
-  .date-row { flex-direction: column; gap: 0.4rem; }
-  .dress-code { font-size: 1.5rem; }
-  .env-icon { font-size: 2.2rem; }
+  .container {
+    width: 100%;
+    margin: 0;
+    padding: 5vw 6vw;
+    border-radius: 0;
+  }
+
+  .date-row {
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .dress-code {
+    font-size: 1.5rem;
+  }
+
+  .env-icon {
+    font-size: 2.2rem;
+  }
 }
